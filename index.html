@@ -1,0 +1,2159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <pre id="all">
+        Fibonacci series. (Recursive and Non recursive) approaches:
+import java.util.Scanner;
+
+public class FibonacciSeries {
+
+    // Recursive method
+    public static int fibonacciRecursive(int n) {
+        if (n lessthaneq 1)
+            return n;
+        return fibonacciRecursive(n - 1) + fibonacciRecursive(n - 2);
+    }
+
+    // Non-recursive method
+    public static void fibonacciNonRecursive(int count) {
+        int a = 0, b = 1;
+        System.out.print("Non-Recursive Fibonacci Series: ");
+        for (int i = 0; i &lt; count; i++) {
+            System.out.print(a + " ");
+            int next = a + b;
+            a = b;
+            b = next;
+        }
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the number of terms: ");
+        int count = sc.nextInt();
+
+        // Non-recursive approach
+        fibonacciNonRecursive(count);
+
+        // Recursive approach
+        System.out.print("Recursive Fibonacci Series: ");
+        for (int i = 0; i &lt; count; i++) {
+            System.out.print(fibonacciRecursive(i) + " ");
+        }
+
+        sc.close();
+    }
+}
+
+
+
+
+
+
+
+-------------------------------------------------------------------------------------------
+Maximum and minimum number from an array. (Recursive and Non-recursive) 
+
+import java.util.Scanner;
+
+public class MaxMinArray {
+
+    // Recursive method to find maximum
+    public static int findMaxRecursive(int[] arr, int index) {
+        if (index == arr.length - 1)
+            return arr[index];
+        return Math.max(arr[index], findMaxRecursive(arr, index + 1));
+    }
+
+    // Recursive method to find minimum
+    public static int findMinRecursive(int[] arr, int index) {
+        if (index == arr.length - 1)
+            return arr[index];
+        return Math.min(arr[index], findMinRecursive(arr, index + 1));
+    }
+
+    // Non-recursive method to find max and min
+    public static void findMaxMinNonRecursive(int[] arr) {
+        int max = arr[0];
+        int min = arr[0];
+
+        for (int num : arr) {
+            if (num > max)
+                max = num;
+            if (num &lt; min)
+                min = num;
+        }
+
+        System.out.println("Non-Recursive Max: " + max);
+        System.out.println("Non-Recursive Min: " + min);
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number of elements in array: ");
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+
+        System.out.println("Enter array elements:");
+        for (int i = 0; i &lt; n; i++)
+            arr[i] = sc.nextInt();
+
+        // Non-recursive approach
+        findMaxMinNonRecursive(arr);
+
+        // Recursive approach
+        int maxRecursive = findMaxRecursive(arr, 0);
+        int minRecursive = findMinRecursive(arr, 0);
+
+        System.out.println("Recursive Max: " + maxRecursive);
+        System.out.println("Recursive Min: " + minRecursive);
+
+        sc.close();
+    }
+}
+
+
+
+
+
+
+-------------------------------------------------------------------------------------------------
+Write a program to find the factorial of a number. ( Recursive and Non recursive) 
+
+import java.util.Scanner;
+
+public class Factorial {
+
+    // Recursive method
+    public static long factorialRecursive(int n) {
+        if (n == 0 || n == 1)
+            return 1;
+        return n * factorialRecursive(n - 1);
+    }
+
+    // Non-recursive method
+    public static long factorialNonRecursive(int n) {
+        long fact = 1;
+        for (int i = 2; i lessthaneq n; i++) {
+            fact *= i;
+        }
+        return fact;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int num = sc.nextInt();
+
+        // Non-recursive
+        System.out.println("Non-Recursive Factorial: " + factorialNonRecursive(num));
+
+        // Recursive
+        System.out.println("Recursive Factorial: " + factorialRecursive(num));
+
+        sc.close();
+    }
+}
+
+
+
+-----------------------------------------------------------------------------------------------------
+Write a program to find the Sum of the First N Odd & Even Numbers. (Recursive and Non-recursive)
+
+import java.util.Scanner;
+
+public class SumOddEven {
+
+    // Recursive method to find sum of first N even numbers
+    public static int sumEvenRecursive(int n) {
+        if (n == 0)
+            return 0;
+        return 2 * n + sumEvenRecursive(n - 1);
+    }
+
+    // Recursive method to find sum of first N odd numbers
+    public static int sumOddRecursive(int n) {
+        if (n == 0)
+            return 0;
+        return 2 * n - 1 + sumOddRecursive(n - 1);
+    }
+
+    // Non-recursive method to find sum of first N even numbers
+    public static int sumEvenNonRecursive(int n) {
+        int sum = 0;
+        for (int i = 1; i lessthaneq n; i++) {
+            sum += 2 * i;
+        }
+        return sum;
+    }
+
+    // Non-recursive method to find sum of first N odd numbers
+    public static int sumOddNonRecursive(int n) {
+        int sum = 0;
+        for (int i = 1; i lessthaneq n; i++) {
+            sum += 2 * i - 1;
+        }
+        return sum;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the value of N: ");
+        int n = sc.nextInt();
+
+        // Non-recursive
+        System.out.println("Non-Recursive Sum of first " + n + " even numbers: " + sumEvenNonRecursive(n));
+        System.out.println("Non-Recursive Sum of first " + n + " odd numbers: " + sumOddNonRecursive(n));
+
+        // Recursive
+        System.out.println("Recursive Sum of first " + n + " even numbers: " + sumEvenRecursive(n));
+        System.out.println("Recursive Sum of first " + n + " odd numbers: " + sumOddRecursive(n));
+
+        sc.close();
+    }
+}
+
+
+
+----------------------------------------------------------------------------------------------------
+Write a program to add, multiply, and transpose of two matrices. (Recursive and Non-recursive) 
+
+import java.util.Scanner;
+
+public class MatrixOperations {
+
+    // Non-recursive matrix addition
+    public static int[][] addMatrixNonRecursive(int[][] A, int[][] B, int rows, int cols) {
+        int[][] result = new int[rows][cols];
+        for (int i = 0; i &lt; rows; i++)
+            for (int j = 0; j &lt; cols; j++)
+                result[i][j] = A[i][j] + B[i][j];
+        return result;
+    }
+
+    // Recursive matrix addition
+    public static void addMatrixRecursive(int[][] A, int[][] B, int[][] result, int i, int j, int rows, int cols) {
+        if (i >= rows)
+            return;
+        if (j &lt; cols) {
+            result[i][j] = A[i][j] + B[i][j];
+            addMatrixRecursive(A, B, result, i, j + 1, rows, cols);
+        } else {
+            addMatrixRecursive(A, B, result, i + 1, 0, rows, cols);
+        }
+    }
+
+    // Non-recursive matrix multiplication
+    public static int[][] multiplyMatrixNonRecursive(int[][] A, int[][] B, int m, int n, int p) {
+        int[][] result = new int[m][p];
+        for (int i = 0; i &lt; m; i++)
+            for (int j = 0; j &lt; p; j++)
+                for (int k = 0; k &lt; n; k++)
+                    result[i][j] += A[i][k] * B[k][j];
+        return result;
+    }
+
+    // Recursive matrix multiplication
+    public static void multiplyMatrixRecursive(int[][] A, int[][] B, int[][] result, int i, int j, int k, int m, int n, int p) {
+        if (i >= m)
+            return;
+        if (j &lt; p) {
+            if (k &lt; n) {
+                result[i][j] += A[i][k] * B[k][j];
+                multiplyMatrixRecursive(A, B, result, i, j, k + 1, m, n, p);
+            } else {
+                multiplyMatrixRecursive(A, B, result, i, j + 1, 0, m, n, p);
+            }
+        } else {
+            multiplyMatrixRecursive(A, B, result, i + 1, 0, 0, m, n, p);
+        }
+    }
+
+    // Transpose matrix (non-recursive)
+    public static int[][] transposeNonRecursive(int[][] A, int rows, int cols) {
+        int[][] result = new int[cols][rows];
+        for (int i = 0; i &lt; rows; i++)
+            for (int j = 0; j &lt; cols; j++)
+                result[j][i] = A[i][j];
+        return result;
+    }
+
+    // Transpose matrix (recursive)
+    public static void transposeRecursive(int[][] A, int[][] result, int i, int j, int rows, int cols) {
+        if (i >= rows)
+            return;
+        if (j &lt; cols) {
+            result[j][i] = A[i][j];
+            transposeRecursive(A, result, i, j + 1, rows, cols);
+        } else {
+            transposeRecursive(A, result, i + 1, 0, rows, cols);
+        }
+    }
+
+    // Utility method to print matrix
+    public static void printMatrix(int[][] matrix) {
+        for (int[] row : matrix) {
+            for (int val : row)
+                System.out.print(val + " ");
+            System.out.println();
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Input dimensions
+        System.out.print("Enter rows and columns for matrix A: ");
+        int m = sc.nextInt();
+        int n = sc.nextInt();
+        int[][] A = new int[m][n];
+
+        System.out.print("Enter rows and columns for matrix B: ");
+        int r = sc.nextInt();
+        int c = sc.nextInt();
+        int[][] B = new int[r][c];
+
+        // Input matrix A
+        System.out.println("Enter elements of Matrix A:");
+        for (int i = 0; i &lt; m; i++)
+            for (int j = 0; j &lt; n; j++)
+                A[i][j] = sc.nextInt();
+
+        // Input matrix B
+        System.out.println("Enter elements of Matrix B:");
+        for (int i = 0; i &lt; r; i++)
+            for (int j = 0; j &lt; c; j++)
+                B[i][j] = sc.nextInt();
+
+        // --- Addition ---
+        if (m == r && n == c) {
+            int[][] addNonRec = addMatrixNonRecursive(A, B, m, n);
+            System.out.println("\nNon-Recursive Addition:");
+            printMatrix(addNonRec);
+
+            int[][] addRec = new int[m][n];
+            addMatrixRecursive(A, B, addRec, 0, 0, m, n);
+            System.out.println("Recursive Addition:");
+            printMatrix(addRec);
+        } else {
+            System.out.println("\nAddition not possible (dimensions mismatch).");
+        }
+
+        // --- Multiplication ---
+        if (n == r) {
+            int[][] mulNonRec = multiplyMatrixNonRecursive(A, B, m, n, c);
+            System.out.println("\nNon-Recursive Multiplication:");
+            printMatrix(mulNonRec);
+
+            int[][] mulRec = new int[m][c];
+            multiplyMatrixRecursive(A, B, mulRec, 0, 0, 0, m, n, c);
+            System.out.println("Recursive Multiplication:");
+            printMatrix(mulRec);
+        } else {
+            System.out.println("\nMultiplication not possible (A's columns != B's rows).");
+        }
+
+        // --- Transpose ---
+        int[][] transANonRec = transposeNonRecursive(A, m, n);
+        System.out.println("\nTranspose of Matrix A (Non-Recursive):");
+        printMatrix(transANonRec);
+
+        int[][] transARec = new int[n][m];
+        transposeRecursive(A, transARec, 0, 0, m, n);
+        System.out.println("Transpose of Matrix A (Recursive):");
+        printMatrix(transARec);
+
+        sc.close();
+    }
+}
+
+
+
+
+
+----------------------------------------------------------------------------------------------------------------
+Given an array of integers, find an element from it using Binary Search.
+
+import java.util.Scanner;
+import java.util.Arrays;
+
+public class BinarySearchExample {
+
+    // Binary Search function
+    public static int binarySearch(int[] arr, int left, int right, int target) {
+        if (left lessthaneq right) {
+            int mid = left + (right - left) / 2;
+
+            if (arr[mid] == target)
+                return mid; // Element found
+            else if (arr[mid] > target)
+                return binarySearch(arr, left, mid - 1, target);
+            else
+                return binarySearch(arr, mid + 1, right, target);
+        }
+        return -1; // Element not found
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Input array
+        System.out.print("Enter number of elements: ");
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+
+        System.out.println("Enter array elements:");
+        for (int i = 0; i &lt; n; i++)
+            arr[i] = sc.nextInt();
+
+        // Sort the array before applying Binary Search
+        Arrays.sort(arr);
+
+        System.out.print("Enter element to search: ");
+        int target = sc.nextInt();
+
+        int result = binarySearch(arr, 0, n - 1, target);
+
+        if (result != -1)
+            System.out.println("Element found at index (0-based): " + result);
+        else
+            System.out.println("Element not found in the array.");
+
+        sc.close();
+    }
+}
+
+
+
+----------------------------------------------------------------------------------------------
+Given an array of integers, sort it using the merge sort technique using the Divide and Conquer Approach. 
+
+import java.util.Scanner;
+
+public class MergeSort {
+
+    // Merge two sorted subarrays
+    public static void merge(int[] arr, int left, int mid, int right) {
+        // Sizes of subarrays
+        int n1 = mid - left + 1;
+        int n2 = right - mid;
+
+        // Create temp arrays
+        int[] L = new int[n1];
+        int[] R = new int[n2];
+
+        // Copy data to temp arrays
+        for (int i = 0; i &lt; n1; ++i)
+            L[i] = arr[left + i];
+        for (int j = 0; j &lt; n2; ++j)
+            R[j] = arr[mid + 1 + j];
+
+        // Merge the temp arrays
+        int i = 0, j = 0;
+        int k = left;
+
+        while (i &lt; n1 && j &lt; n2) {
+            if (L[i] lessthaneq R[j])
+                arr[k++] = L[i++];
+            else
+                arr[k++] = R[j++];
+        }
+
+        // Copy remaining elements
+        while (i &lt; n1)
+            arr[k++] = L[i++];
+
+        while (j &lt; n2)
+            arr[k++] = R[j++];
+    }
+
+    // Merge Sort function
+    public static void mergeSort(int[] arr, int left, int right) {
+        if (left &lt; right) {
+            // Find middle point
+            int mid = left + (right - left) / 2;
+
+            // Recursively sort first and second halves
+            mergeSort(arr, left, mid);
+            mergeSort(arr, mid + 1, right);
+
+            // Merge the sorted halves
+            merge(arr, left, mid, right);
+        }
+    }
+
+    // Print array
+    public static void printArray(int[] arr) {
+        for (int value : arr)
+            System.out.print(value + " ");
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Input
+        System.out.print("Enter number of elements: ");
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+
+        System.out.println("Enter elements of the array:");
+        for (int i = 0; i &lt; n; i++)
+            arr[i] = sc.nextInt();
+
+        // Apply merge sort
+        mergeSort(arr, 0, n - 1);
+
+        // Output
+        System.out.println("Sorted array using Merge Sort:");
+        printArray(arr);
+
+        sc.close();
+    }
+}
+
+
+
+
+-----------------------------------------------------------------------------------------------
+Given an array of integers, sort it by using Quick Sort using Divide and Conquer Approach. 
+import java.util.Scanner;
+
+public class QuickSort {
+
+    // Function to perform partition
+    public static int partition(int[] arr, int low, int high) {
+        int pivot = arr[high]; // Choose the last element as pivot
+        int i = low - 1; // Index of smaller element
+
+        for (int j = low; j &lt; high; j++) {
+            if (arr[j] &lt; pivot) {
+                i++;
+
+                // Swap arr[i] and arr[j]
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+
+        // Swap arr[i+1] and pivot (arr[high])
+        int temp = arr[i + 1];
+        arr[i + 1] = arr[high];
+        arr[high] = temp;
+
+        return i + 1; // Return pivot index
+    }
+
+    // QuickSort function
+    public static void quickSort(int[] arr, int low, int high) {
+        if (low &lt; high) {
+            // Partitioning index
+            int pi = partition(arr, low, high);
+
+            // Recursively sort elements before and after partition
+            quickSort(arr, low, pi - 1);
+            quickSort(arr, pi + 1, high);
+        }
+    }
+
+    // Function to print array
+    public static void printArray(int[] arr) {
+        for (int val : arr)
+            System.out.print(val + " ");
+        System.out.println();
+    }
+
+    // Main method
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Input array
+        System.out.print("Enter number of elements: ");
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+
+        System.out.println("Enter array elements:");
+        for (int i = 0; i &lt; n; i++)
+            arr[i] = sc.nextInt();
+
+        // Sort using QuickSort
+        quickSort(arr, 0, n - 1);
+
+        // Output sorted array
+        System.out.println("Sorted array using Quick Sort:");
+        printArray(arr);
+
+        sc.close();
+    }
+}
+
+
+
+-----------------------------------------------------------------------------------------------------------
+Sort an array of integers by building a max or min heap using the Divide and Conquer Approach. 
+
+Max heap version:
+import java.util.Scanner;
+
+public class HeapSort {
+
+    // Heapify a subtree rooted with node i (max heap)
+    public static void heapify(int[] arr, int n, int i) {
+        int largest = i;       // Initialize largest as root
+        int left = 2 * i + 1;  // left child
+        int right = 2 * i + 2; // right child
+
+        // If left child is larger than root
+        if (left &lt; n && arr[left] > arr[largest])
+            largest = left;
+
+        // If right child is larger than largest so far
+        if (right &lt; n && arr[right] > arr[largest])
+            largest = right;
+
+        // If largest is not root
+        if (largest != i) {
+            int swap = arr[i];
+            arr[i] = arr[largest];
+            arr[largest] = swap;
+
+            // Recursively heapify the affected subtree
+            heapify(arr, n, largest);
+        }
+    }
+
+    // Main function to perform heap sort
+    public static void heapSort(int[] arr) {
+        int n = arr.length;
+
+        // Build max heap
+        for (int i = n / 2 - 1; i >= 0; i--)
+            heapify(arr, n, i);
+
+        // One by one extract elements from heap
+        for (int i = n - 1; i >= 0; i--) {
+            // Move current root to end
+            int temp = arr[0];
+            arr[0] = arr[i];
+            arr[i] = temp;
+
+            // Call max heapify on the reduced heap
+            heapify(arr, i, 0);
+        }
+    }
+
+    // Print array
+    public static void printArray(int[] arr) {
+        for (int val : arr)
+            System.out.print(val + " ");
+        System.out.println();
+    }
+
+    // Main method
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Input array
+        System.out.print("Enter number of elements: ");
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+
+        System.out.println("Enter elements:");
+        for (int i = 0; i &lt; n; i++)
+            arr[i] = sc.nextInt();
+
+        // Perform heap sort
+        heapSort(arr);
+
+        // Output
+        System.out.println("Sorted array using Heap Sort:");
+        printArray(arr);
+
+        sc.close();
+    }
+}
+
+
+
+min heap version:
+
+import java.util.Scanner;
+
+public class MinHeapSort {
+
+    // Heapify a subtree rooted with node i (min heap)
+    public static void minHeapify(int[] arr, int n, int i) {
+        int smallest = i;       // Initialize smallest as root
+        int left = 2 * i + 1;   // left child
+        int right = 2 * i + 2;  // right child
+
+        // If left child is smaller than root
+        if (left &lt; n && arr[left] &lt; arr[smallest])
+            smallest = left;
+
+        // If right child is smaller than smallest so far
+        if (right &lt; n && arr[right] &lt; arr[smallest])
+            smallest = right;
+
+        // If smallest is not root
+        if (smallest != i) {
+            int temp = arr[i];
+            arr[i] = arr[smallest];
+            arr[smallest] = temp;
+
+            // Recursively heapify the affected subtree
+            minHeapify(arr, n, smallest);
+        }
+    }
+
+    // Main function to perform heap sort using min heap
+    public static void heapSortDescending(int[] arr) {
+        int n = arr.length;
+
+        // Build min heap
+        for (int i = n / 2 - 1; i >= 0; i--)
+            minHeapify(arr, n, i);
+
+        // One by one extract elements from heap and move to end
+        for (int i = n - 1; i >= 0; i--) {
+            // Swap root (smallest) with last element
+            int temp = arr[0];
+            arr[0] = arr[i];
+            arr[i] = temp;
+
+            // Call minHeapify on reduced heap
+            minHeapify(arr, i, 0);
+        }
+    }
+
+    // Print array
+    public static void printArray(int[] arr) {
+        for (int val : arr)
+            System.out.print(val + " ");
+        System.out.println();
+    }
+
+    // Main method
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Input
+        System.out.print("Enter number of elements: ");
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+
+        System.out.println("Enter array elements:");
+        for (int i = 0; i &lt; n; i++)
+            arr[i] = sc.nextInt();
+
+        // Sort using min heap
+        heapSortDescending(arr);
+
+        // Output sorted array (descending)
+        System.out.println("Sorted array using Min Heap (Descending Order):");
+        printArray(arr);
+
+        sc.close();
+    }
+}
+
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------------
+Write a program to implement the Multiplication of Large Integers using Divide and Conquer Approach. 
+
+
+Explanation:
+We use BigInteger because Java's primitive types can't handle very large numbers.
+
+The Karatsuba algorithm divides each number into two halves recursively and combines results efficiently.
+
+The base case uses the built-in multiplication when numbers are small enough for efficiency.
+
+This algorithm reduces multiplication complexity from O(n²) to about O(n^1.585).
+
+import java.math.BigInteger;
+import java.util.Scanner;
+
+public class LargeIntegerMultiplication {
+
+    // Karatsuba multiplication function
+    public static BigInteger karatsuba(BigInteger x, BigInteger y) {
+        // Base case for recursion
+        int n = Math.max(x.bitLength(), y.bitLength());
+
+        if (n lessthaneq 2000)  // If numbers are small, use built-in multiplication
+            return x.multiply(y);
+
+        // Number of bits divided by 2
+        n = (n / 2) + (n % 2);
+
+        // x = a*2^n + b
+        BigInteger a = x.shiftRight(n);
+        BigInteger b = x.subtract(a.shiftLeft(n));
+
+        // y = c*2^n + d
+        BigInteger c = y.shiftRight(n);
+        BigInteger d = y.subtract(c.shiftLeft(n));
+
+        // Compute subproblems
+        BigInteger ac = karatsuba(a, c);
+        BigInteger bd = karatsuba(b, d);
+        BigInteger abcd = karatsuba(a.add(b), c.add(d));
+
+        // Karatsuba formula: ac * 2^(2n) + (abcd - ac - bd) * 2^n + bd
+        return ac.shiftLeft(2 * n).add(abcd.subtract(ac).subtract(bd).shiftLeft(n)).add(bd);
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter first large integer:");
+        BigInteger num1 = new BigInteger(sc.nextLine());
+
+        System.out.println("Enter second large integer:");
+        BigInteger num2 = new BigInteger(sc.nextLine());
+
+        BigInteger result = karatsuba(num1, num2);
+
+        System.out.println("Product using Karatsuba multiplication:");
+        System.out.println(result);
+
+        sc.close();
+    }
+}
+
+
+input:
+Enter first large integer:
+123456789012345678901234567890
+
+Enter second large integer:
+987654321098765432109876543210
+
+
+-----------------------------------------------------------------------------------------------
+Write a program to implement the Knapsack problem using the greedy method 
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+class Item implements Comparable&lt;Item&gt; {
+    int value, weight;
+    double ratio; // value/weight ratio
+
+    Item(int value, int weight) {
+        this.value = value;
+        this.weight = weight;
+        this.ratio = (double) value / weight;
+    }
+
+    // Sort items by decreasing ratio
+    @Override
+    public int compareTo(Item other) {
+        if (this.ratio &lt; other.ratio) return 1;
+        else if (this.ratio > other.ratio) return -1;
+        else return 0;
+    }
+}
+
+public class FractionalKnapsack {
+
+    public static double fractionalKnapsack(int W, Item[] items) {
+        Arrays.sort(items);
+
+        double totalValue = 0.0;
+        int currentWeight = 0;
+
+        for (Item item : items) {
+            if (currentWeight + item.weight lessthaneq W) {
+                // Take whole item
+                currentWeight += item.weight;
+                totalValue += item.value;
+            } else {
+                // Take fraction of item
+                int remain = W - currentWeight;
+                totalValue += item.ratio * remain;
+                break;
+            }
+        }
+        return totalValue;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter number of items: ");
+        int n = sc.nextInt();
+
+        Item[] items = new Item[n];
+
+        System.out.println("Enter value and weight of each item:");
+        for (int i = 0; i &lt; n; i++) {
+            int value = sc.nextInt();
+            int weight = sc.nextInt();
+            items[i] = new Item(value, weight);
+        }
+
+        System.out.print("Enter capacity of knapsack: ");
+        int capacity = sc.nextInt();
+
+        double maxValue = fractionalKnapsack(capacity, items);
+        System.out.println("Maximum value in knapsack = " + maxValue);
+
+        sc.close();
+    }
+}
+
+
+
+-------------------------------------------------------------------------------------------
+Prims greedy
+
+import java.util.Scanner;
+
+public class PrimsAlgorithm {
+    private static final int INF = 9999999;
+
+    public static void primMST(int[][] graph, int V) {
+        int[] parent = new int[V];    // Array to store constructed MST
+        int[] key = new int[V];       // Key values to pick minimum weight edge
+        boolean[] mstSet = new boolean[V]; // To represent set of vertices included in MST
+
+        // Initialize all keys as infinite
+        for (int i = 0; i &lt; V; i++) {
+            key[i] = INF;
+            mstSet[i] = false;
+        }
+
+        // Always include first vertex in MST
+        key[0] = 0;     // Make key 0 so that this vertex is picked first
+        parent[0] = -1; // First node is always root of MST
+
+        for (int count = 0; count &lt; V - 1; count++) {
+            // Pick the minimum key vertex from the set of vertices not yet included in MST
+            int u = minKey(key, mstSet, V);
+            mstSet[u] = true;
+
+            // Update key and parent index of the adjacent vertices
+            for (int v = 0; v &lt; V; v++) {
+                if (graph[u][v] != 0 && !mstSet[v] && graph[u][v] &lt; key[v]) {
+                    parent[v] = u;
+                    key[v] = graph[u][v];
+                }
+            }
+        }
+
+        printMST(parent, graph, V);
+    }
+
+    // Utility function to find vertex with minimum key value
+    private static int minKey(int[] key, boolean[] mstSet, int V) {
+        int min = INF, minIndex = -1;
+        for (int v = 0; v &lt; V; v++) {
+            if (!mstSet[v] && key[v] &lt; min) {
+                min = key[v];
+                minIndex = v;
+            }
+        }
+        return minIndex;
+    }
+
+    // Print MST stored in parent[]
+    private static void printMST(int[] parent, int[][] graph, int V) {
+        System.out.println("Edge \tWeight");
+        for (int i = 1; i &lt; V; i++)
+            System.out.println(parent[i] + " - " + i + "\t" + graph[i][parent[i]]);
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter number of vertices: ");
+        int V = sc.nextInt();
+
+        int[][] graph = new int[V][V];
+        System.out.println("Enter adjacency matrix (0 if no edge):");
+        for (int i = 0; i &lt; V; i++) {
+            for (int j = 0; j &lt; V; j++) {
+                graph[i][j] = sc.nextInt();
+            }
+        }
+
+        primMST(graph, V);
+        sc.close();
+    }
+}
+
+
+
+1. Prim’s Algorithm — Sample Input
+Suppose you have 5 vertices (0 to 4) and the adjacency matrix for the weighted graph:
+
+yaml
+Copy
+Edit
+Enter number of vertices: 5
+Enter adjacency matrix (0 if no edge):
+0 2 0 6 0
+2 0 3 8 5
+0 3 0 0 7
+6 8 0 0 9
+0 5 7 9 0
+
+
+--------------------------------------------------------------------------------------------------
+Kruskal greedy
+
+
+package Graph;
+
+import java.util.Arrays;
+
+class Edge implements Comparable<Edge> {
+    int src, dest, weight;
+
+    public Edge(int src, int dest, int weight) {
+        this.src = src;
+        this.dest = dest;
+        this.weight = weight;
+    }
+
+    // sorting edge by weight in ascending order
+    public int compareTo(Edge compareEdge) {
+        return this.weight - compareEdge.weight;
+    }
+}
+
+class Subset {
+    int parent, rank;
+}
+
+public class Kruskal {
+    int V, E;
+    Edge[] edges;
+
+    public Kruskal(int v, int e) {
+        V = v;
+        E = e;
+        edges = new Edge[E];
+    }
+
+    // finding func with path compression
+    int find(Subset[] subsets, int i) {
+        if (subsets[i].parent != i) {
+            subsets[i].parent = find(subsets, subsets[i].parent);
+        }
+        return subsets[i].parent;
+    }
+
+    // union function with rank opt
+    void union(Subset[] subsets, int x, int y) {
+        int rootX = find(subsets, x);
+        int rootY = find(subsets, y);
+
+        if (subsets[rootX].rank &lt; subsets[rootY].rank) {
+            subsets[rootX].parent = rootY;
+        } else if (subsets[rootX].rank > subsets[rootY].rank) {
+            subsets[rootY].parent = rootX;
+        } else {
+            subsets[rootY].parent = rootX;
+            subsets[rootX].rank++;
+        }
+    }
+
+    void kruskalMST() {
+        Edge[] result = new Edge[V - 1];
+        int e = 0;
+        int i = 0;
+
+        // 1: sort the edges
+        Arrays.sort(edges);
+
+        // Allocate the memory for subsets
+        Subset[] subsets = new Subset[V];
+        for (int v = 0; v &lt; V; v++) {
+            subsets[v] = new Subset();
+            subsets[v].parent = v;
+            subsets[v].rank = 0;
+        }
+        // 2:pick the smallest edge and check for cycle
+        while (e &lt; V - 1) {
+            Edge nextEdge = edges[i++];
+
+            int x = find(subsets, nextEdge.src);
+            int y = find(subsets, nextEdge.dest);
+
+            // If adding this edge doesn't cause a cycle, include it in MST
+            if (x != y) {
+                result[e++] = nextEdge;
+                union(subsets, x, y);
+            }
+
+        }
+        // Print the MST
+        System.out.println("Edges in Minimum Spanning Tree:");
+        for (i = 0; i &lt; e; i++) {
+            System.out.println(result[i].src + " - " + result[i].dest + " : " + result[i].weight);
+        }
+
+    }
+
+    public static void main(String[] args) {
+        int V = 4; // Number of vertices
+        int E = 5; // Number of edges
+        Kruskal graph = new Kruskal(V, E);
+
+        // Adding edges (source, destination, weight)
+        graph.edges[0] = new Edge(0, 1, 10);
+        graph.edges[1] = new Edge(0, 2, 6);
+        graph.edges[2] = new Edge(0, 3, 5);
+        graph.edges[3] = new Edge(1, 3, 15);
+        graph.edges[4] = new Edge(2, 3, 4);
+
+        // Run Kruskal's Algorithm
+        graph.kruskalMST();
+    }
+}
+
+
+
+
+Kruskal’s Algorithm — Sample Input
+For the same graph above, you can enter edges explicitly:
+
+mathematica
+Copy
+Edit
+Enter number of vertices: 5
+Enter number of edges: 7
+Enter edges (source destination weight):
+0 1 2
+0 3 6
+1 2 3
+1 3 8
+1 4 5
+2 4 7
+3 4 9
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+Write a program to implement a Single source shortest path (Dijkstra’s algorithm) using the greedy method 
+
+import java.util.Scanner;
+
+public class DijkstraAlgorithm {
+
+    private static final int INF = 9999999;
+
+    // Function to find vertex with minimum distance value from set of vertices not yet processed
+    private static int minDistance(int[] dist, boolean[] sptSet, int V) {
+        int min = INF, minIndex = -1;
+
+        for (int v = 0; v &lt; V; v++) {
+            if (!sptSet[v] && dist[v] lessthaneq min) {
+                min = dist[v];
+                minIndex = v;
+            }
+        }
+
+        return minIndex;
+    }
+
+    public static void dijkstra(int[][] graph, int src, int V) {
+        int[] dist = new int[V];        // Output array. dist[i] will hold shortest distance from src to i
+        boolean[] sptSet = new boolean[V]; // sptSet[i] will be true if vertex i included in shortest path tree
+
+        // Initialize all distances as infinite and sptSet[] as false
+        for (int i = 0; i &lt; V; i++) {
+            dist[i] = INF;
+            sptSet[i] = false;
+        }
+
+        // Distance of source vertex from itself is always 0
+        dist[src] = 0;
+
+        // Find shortest path for all vertices
+        for (int count = 0; count &lt; V - 1; count++) {
+            int u = minDistance(dist, sptSet, V);
+            sptSet[u] = true;
+
+            // Update dist value of adjacent vertices of the picked vertex.
+            for (int v = 0; v &lt; V; v++) {
+                // Update dist[v] only if:
+                // 1. There is an edge from u to v
+                // 2. Vertex v is not in sptSet
+                // 3. Total weight of path from src to v through u is smaller than current dist[v]
+                if (!sptSet[v] && graph[u][v] != 0 && dist[u] != INF
+                        && dist[u] + graph[u][v] &lt; dist[v]) {
+                    dist[v] = dist[u] + graph[u][v];
+                }
+            }
+        }
+
+        printSolution(dist, V, src);
+    }
+
+    private static void printSolution(int[] dist, int V, int src) {
+        System.out.println("Vertex\t Distance from Source " + src);
+        for (int i = 0; i &lt; V; i++) {
+            System.out.println(i + "\t\t" + dist[i]);
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter number of vertices: ");
+        int V = sc.nextInt();
+
+        int[][] graph = new int[V][V];
+
+        System.out.println("Enter adjacency matrix (0 if no edge):");
+        for (int i = 0; i &lt; V; i++) {
+            for (int j = 0; j &lt; V; j++) {
+                graph[i][j] = sc.nextInt();
+            }
+        }
+
+        System.out.print("Enter source vertex: ");
+        int src = sc.nextInt();
+
+        dijkstra(graph, src, V);
+        sc.close();
+    }
+}
+
+
+
+
+Sample Input:
+yaml
+Copy
+Edit
+Enter number of vertices: 5
+Enter adjacency matrix (0 if no edge):
+0 10 0 0 5
+0 0 1 0 2
+0 0 0 4 0
+7 0 6 0 0
+0 3 9 2 0
+Enter source vertex: 0
+
+
+
+------------------------------------------------------------------------------------------------------------
+Write a program to implement Knapsack (0/1) using Dynamic Programming.
+
+import java.util.Scanner;
+
+public class Knapsack01 {
+
+    // Returns the maximum value that can be put in a knapsack of capacity W
+    public static int knapsack(int W, int[] weights, int[] values, int n) {
+        int[][] dp = new int[n + 1][W + 1];
+
+        // Build table dp[][] in bottom up manner
+        for (int i = 0; i lessthaneqto n; i++) {
+            for (int w = 0; w lessthaneqto W; w++) {
+                if (i == 0 || w == 0) {
+                    dp[i][w] = 0; // Base case: no items or zero capacity
+                } else if (weights[i - 1] lessthaneqto w) {
+                    // Max of including the item and excluding it
+                    dp[i][w] = Math.max(values[i - 1] + dp[i - 1][w - weights[i - 1]], dp[i - 1][w]);
+                } else {
+                    // Can't include the item because it exceeds capacity
+                    dp[i][w] = dp[i - 1][w];
+                }
+            }
+        }
+        return dp[n][W];
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter number of items: ");
+        int n = sc.nextInt();
+
+        int[] values = new int[n];
+        int[] weights = new int[n];
+
+        System.out.println("Enter values of items:");
+        for (int i = 0; i &lt; n; i++) {
+            values[i] = sc.nextInt();
+        }
+
+        System.out.println("Enter weights of items:");
+        for (int i = 0; i &lt; n; i++) {
+            weights[i] = sc.nextInt();
+        }
+
+        System.out.print("Enter knapsack capacity: ");
+        int W = sc.nextInt();
+
+        int maxValue = knapsack(W, weights, values, n);
+        System.out.println("Maximum value possible in knapsack = " + maxValue);
+
+        sc.close();
+    }
+}
+
+
+Sample Input:
+yaml
+Copy
+Edit
+Enter number of items: 4
+Enter values of items:
+60 100 120 80
+Enter weights of items:
+10 20 30 40
+Enter knapsack capacity: 50
+
+
+--------------------------------------------------------------------------------------------------
+Write a program to implement Matrix chain multiplication using Dynamic Programming.
+
+import java.util.Scanner;
+
+public class MatrixChainMultiplication {
+
+    // Function to find minimum multiplication cost
+    public static int matrixChainOrder(int[] dims) {
+        int n = dims.length - 1; // Number of matrices
+        int[][] dp = new int[n][n];
+
+        // dp[i][j] = Minimum number of multiplications needed to compute the matrix Ai...Aj
+        // cost is zero when multiplying one matrix
+        for (int i = 0; i &lt; n; i++) {
+            dp[i][i] = 0;
+        }
+
+        // l is chain length
+        for (int l = 2; l lessthaneqto n; l++) {
+            for (int i = 0; i &lt; n - l + 1; i++) {
+                int j = i + l - 1;
+                dp[i][j] = Integer.MAX_VALUE;
+
+                for (int k = i; k &lt; j; k++) {
+                    // cost = cost/scalar multiplications of left + right + cost to multiply two results
+                    int cost = dp[i][k] + dp[k + 1][j] + dims[i] * dims[k + 1] * dims[j + 1];
+
+                    if (cost &lt; dp[i][j]) {
+                        dp[i][j] = cost;
+                    }
+                }
+            }
+        }
+
+        return dp[0][n - 1];
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter number of matrices: ");
+        int n = sc.nextInt();
+
+        int[] dims = new int[n + 1];
+        System.out.println("Enter dimensions of matrices (length " + (n + 1) + "):");
+        // For matrices A1 (dims[0] x dims[1]), A2 (dims[1] x dims[2]) ... An (dims[n-1] x dims[n])
+        for (int i = 0; i &lt; n + 1; i++) {
+            dims[i] = sc.nextInt();
+        }
+
+        int minCost = matrixChainOrder(dims);
+        System.out.println("Minimum number of multiplications is " + minCost);
+
+        sc.close();
+    }
+}
+
+
+Sample Input:
+mathematica
+Copy
+Edit
+Enter number of matrices: 4
+Enter dimensions of matrices (length 5):
+10 20 30 40 30
+
+
+------------------------------------------------------------------------------------------------------------------------
+Write a program to implement all pair shortest paths (Floyd Warshall) using Dynamic Programming. 
+
+import java.util.Scanner;
+
+public class FloydWarshall {
+
+    private static final int INF = 99999;
+
+    public static void floydWarshall(int[][] graph, int V) {
+        int[][] dist = new int[V][V];
+
+        // Initialize the solution matrix same as input graph matrix
+        for (int i = 0; i &lt; V; i++) {
+            for (int j = 0; j &lt; V; j++) {
+                dist[i][j] = graph[i][j];
+            }
+        }
+
+        // Adding vertices one by one as intermediate vertices
+        for (int k = 0; k &lt; V; k++) {
+            for (int i = 0; i &lt; V; i++) {
+                for (int j = 0; j &lt; V; j++) {
+                    // If vertex k is on the shortest path from i to j, then update dist[i][j]
+                    if (dist[i][k] != INF && dist[k][j] != INF 
+                        && dist[i][k] + dist[k][j] &lt; dist[i][j]) {
+                        dist[i][j] = dist[i][k] + dist[k][j];
+                    }
+                }
+            }
+        }
+
+        printSolution(dist, V);
+    }
+
+    private static void printSolution(int[][] dist, int V) {
+        System.out.println("Shortest distances between every pair of vertices:");
+        for (int i = 0; i &lt; V; i++) {
+            for (int j = 0; j &lt; V; j++) {
+                if (dist[i][j] == INF)
+                    System.out.print("INF ");
+                else
+                    System.out.print(dist[i][j] + "   ");
+            }
+            System.out.println();
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter number of vertices: ");
+        int V = sc.nextInt();
+
+        int[][] graph = new int[V][V];
+        System.out.println("Enter adjacency matrix (use 0 if no edge, INF for no path):");
+
+        for (int i = 0; i &lt; V; i++) {
+            for (int j = 0; j &lt; V; j++) {
+                String val = sc.next();
+                if (val.equalsIgnoreCase("INF")) {
+                    graph[i][j] = INF;
+                } else {
+                    graph[i][j] = Integer.parseInt(val);
+                }
+            }
+        }
+
+        floydWarshall(graph, V);
+
+        sc.close();
+    }
+}
+
+
+
+Sample Input:
+Enter number of vertices: 4
+Enter adjacency matrix (use 0 if no edge, INF for no path):
+0 5 INF 10
+INF 0 3 INF
+INF INF 0 1
+INF INF INF 0
+
+
+-------------------------------------------------------------------------------------------------------------------
+Write a program to implement Graph coloring problems using Backtracking 
+
+import java.util.Scanner;
+
+public class GraphColoring {
+
+    // Number of vertices in the graph
+    private int V;
+
+    // Adjacency matrix representation of the graph
+    private int[][] graph;
+
+    // Array to store colors assigned to vertices
+    private int[] colors;
+
+    public GraphColoring(int V) {
+        this.V = V;
+        graph = new int[V][V];
+        colors = new int[V];
+    }
+
+    // Function to check if the current color assignment is safe for vertex v
+    private boolean isSafe(int v, int c) {
+        for (int i = 0; i &lt; V; i++) {
+            if (graph[v][i] == 1 && colors[i] == c) {
+                return false; // Adjacent vertex has the same color
+            }
+        }
+        return true;
+    }
+
+    // Recursive function to solve graph coloring problem
+    private boolean graphColoringUtil(int m, int v) {
+        // If all vertices are assigned a color
+        if (v == V) {
+            return true;
+        }
+
+        // Try different colors for vertex v
+        for (int c = 1; c lessthaneqto m; c++) {
+            if (isSafe(v, c)) {
+                colors[v] = c;
+
+                if (graphColoringUtil(m, v + 1)) {
+                    return true;
+                }
+
+                // Backtrack
+                colors[v] = 0;
+            }
+        }
+
+        // If no color can be assigned to this vertex
+        return false;
+    }
+
+    // Function to solve the graph coloring problem using m colors
+    public boolean graphColoring(int m) {
+        return graphColoringUtil(m, 0);
+    }
+
+    // Function to print colors assigned to vertices
+    public void printSolution() {
+        System.out.println("Solution Exists: Following are the assigned colors:");
+        for (int i = 0; i &lt; V; i++) {
+            System.out.println("Vertex " + i + " --&gt; Color " + colors[i]);
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter number of vertices: ");
+        int V = sc.nextInt();
+
+        GraphColoring gc = new GraphColoring(V);
+
+        System.out.println("Enter adjacency matrix:");
+        for (int i = 0; i &lt; V; i++) {
+            for (int j = 0; j &lt; V; j++) {
+                gc.graph[i][j] = sc.nextInt();
+            }
+        }
+
+        System.out.print("Enter number of colors: ");
+        int m = sc.nextInt();
+
+        if (gc.graphColoring(m)) {
+            gc.printSolution();
+        } else {
+            System.out.println("No solution exists with " + m + " colors.");
+        }
+
+        sc.close();
+    }
+}
+
+
+
+
+Sample Input:
+yaml
+Copy
+Edit
+Enter number of vertices: 4
+Enter adjacency matrix:
+0 1 1 1
+1 0 1 0
+1 1 0 1
+1 0 1 0
+Enter number of colors: 3
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+Write a program to implement the Hamiltonian cycle using Backtracking 
+
+public class HamiltonianCycle {
+
+    final int V = 5; // Number of vertices
+    int path[];
+
+    // Check if the current vertex v can be added at index 'pos' in the Hamiltonian Cycle
+    boolean isSafe(int v, int graph[][], int path[], int pos) {
+        // Check if current vertex is adjacent to previous vertex
+        if (graph[path[pos - 1]][v] == 0)
+            return false;
+
+        // Check if the vertex has already been included
+        for (int i = 0; i &lt; pos; i++)
+            if (path[i] == v)
+                return false;
+
+        return true;
+    }
+
+    // Recursive utility function to solve Hamiltonian Cycle problem
+    boolean hamCycleUtil(int graph[][], int path[], int pos) {
+        // Base case: If all vertices are included in the path
+        if (pos == V) {
+            // Check if last vertex is connected to the first
+            return graph[path[pos - 1]][path[0]] == 1;
+        }
+
+        // Try different vertices as the next candidate
+        for (int v = 1; v &lt; V; v++) {
+            if (isSafe(v, graph, path, pos)) {
+                path[pos] = v;
+
+                if (hamCycleUtil(graph, path, pos + 1))
+                    return true;
+
+                // Backtrack
+                path[pos] = -1;
+            }
+        }
+
+        return false;
+    }
+
+    // Solves the Hamiltonian Cycle problem
+    int hamCycle(int graph[][]) {
+        path = new int[V];
+        for (int i = 0; i &lt; V; i++)
+            path[i] = -1;
+
+        // Let us put vertex 0 as the first vertex in the path
+        path[0] = 0;
+
+        if (!hamCycleUtil(graph, path, 1)) {
+            System.out.println("Solution does not exist");
+            return 0;
+        }
+
+        printSolution(path);
+        return 1;
+    }
+
+    void printSolution(int path[]) {
+        System.out.println("Hamiltonian Cycle Exists:");
+        for (int i = 0; i &lt; V; i++)
+            System.out.print(path[i] + " ");
+        System.out.println(path[0]); // to show the cycle
+    }
+
+    // Driver Code
+    public static void main(String[] args) {
+        HamiltonianCycle hc = new HamiltonianCycle();
+
+        // Sample graph in the form of an adjacency matrix
+        int graph1[][] = {
+            {0, 1, 0, 1, 0},
+            {1, 0, 1, 1, 1},
+            {0, 1, 0, 0, 1},
+            {1, 1, 0, 0, 1},
+            {0, 1, 1, 1, 0}
+        };
+
+        hc.hamCycle(graph1);
+    }
+}
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+Write a program to implement Travelling Salesman using branch and bound.
+
+import java.util.*;
+
+public class TSPBranchBound {
+
+    static final int INF = Integer.MAX_VALUE;
+
+    static class Node {
+        int[][] reducedMatrix;
+        int cost;
+        int vertex;
+        int level;
+        List&lt;Integer&gt; path;
+
+        Node(int[][] parentMatrix, List&lt;Integer&gt; path, int level, int vertex) {
+            this.reducedMatrix = new int[parentMatrix.length][parentMatrix.length];
+            for (int i = 0; i &lt; parentMatrix.length; i++)
+                System.arraycopy(parentMatrix[i], 0, this.reducedMatrix[i], 0, parentMatrix.length);
+
+            this.path = new ArrayList&lt;&gt;(path);
+            this.level = level;
+            this.vertex = vertex;
+        }
+    }
+
+    // Function to reduce the matrix and return the reduction cost
+    static int reduceMatrix(int[][] matrix) {
+        int cost = 0;
+        int n = matrix.length;
+
+        // Row reduction
+        for (int i = 0; i &lt; n; i++) {
+            int rowMin = INF;
+            for (int j = 0; j &lt; n; j++)
+                if (matrix[i][j] &lt; rowMin)
+                    rowMin = matrix[i][j];
+
+            if (rowMin != INF && rowMin != 0) {
+                cost += rowMin;
+                for (int j = 0; j &lt; n; j++)
+                    if (matrix[i][j] != INF)
+                        matrix[i][j] -= rowMin;
+            }
+        }
+
+        // Column reduction
+        for (int j = 0; j &lt; n; j++) {
+            int colMin = INF;
+            for (int i = 0; i &lt; n; i++)
+                if (matrix[i][j] &lt; colMin)
+                    colMin = matrix[i][j];
+
+            if (colMin != INF && colMin != 0) {
+                cost += colMin;
+                for (int i = 0; i &lt; n; i++)
+                    if (matrix[i][j] != INF)
+                        matrix[i][j] -= colMin;
+            }
+        }
+
+        return cost;
+    }
+
+    // Solve TSP using Branch and Bound
+    static void solveTSP(int[][] costMatrix) {
+        int n = costMatrix.length;
+
+        PriorityQueue<Node> pq = new PriorityQueue lessthangreaterthan(Comparator.comparingInt(a -> a.cost));
+
+        List<Integer> initialPath = new ArrayList lessthangreaterthan();
+        initialPath.add(0);
+
+        Node root = new Node(costMatrix, initialPath, 0, 0);
+
+        root.cost = reduceMatrix(root.reducedMatrix);
+        pq.add(root);
+
+        while (!pq.isEmpty()) {
+            Node min = pq.poll();
+
+            if (min.level == n - 1) {
+                min.path.add(0);
+                System.out.println("Minimum cost path: " + min.path);
+                int finalCost = min.cost + costMatrix[min.vertex][0];
+                System.out.println("Minimum tour cost: " + finalCost);
+                return;
+            }
+
+            for (int i = 0; i &lt; n; i++) {
+                if (min.reducedMatrix[min.vertex][i] != INF) {
+                    Node child = new Node(min.reducedMatrix, min.path, min.level + 1, i);
+                    child.path.add(i);
+
+                    // Set outgoing path from current and incoming path to next as INF
+                    for (int j = 0; j &lt; n; j++) {
+                        child.reducedMatrix[min.vertex][j] = INF;
+                        child.reducedMatrix[j][i] = INF;
+                    }
+
+                    // Block returning to the starting point prematurely
+                    child.reducedMatrix[i][0] = INF;
+
+                    child.cost = min.cost + min.reducedMatrix[min.vertex][i] + reduceMatrix(child.reducedMatrix);
+                    pq.add(child);
+                }
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        // Example cost matrix (4 cities)
+        int[][] costMatrix = {
+            {INF, 10, 15, 20},
+            {10, INF, 35, 25},
+            {15, 35, INF, 30},
+            {20, 25, 30, INF}
+        };
+
+        solveTSP(costMatrix);
+    }
+}
+
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+Given a text txt [0...n-1] and a pattern pat [0...m-1], prints all 
+occurrences of pat [ ] in txt [ ] by using the Brute force string matching 
+approach. You may assume that n > m. 
+
+public class BruteForceStringMatching {
+
+    // Function to perform brute force pattern matching
+    public static void search(String txt, String pat) {
+        int n = txt.length();
+        int m = pat.length();
+
+        System.out.println("Pattern found at positions:");
+
+        for (int i = 0; i lessthaneqto n - m; i++) {
+            int j;
+
+            // Check for pattern match at current position
+            for (j = 0; j &lt; m; j++) {
+                if (txt.charAt(i + j) != pat.charAt(j)) {
+                    break;
+                }
+            }
+
+            // If full pattern matched
+            if (j == m) {
+                System.out.println("Pattern found at index " + i);
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        // Example text and pattern
+        String txt = "ABAAABCDBBABCDDEBCABC";
+        String pat = "ABC";
+
+        search(txt, pat);
+    }
+}
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+Given a text txt [0...n-1] and a pattern pat [0...m-1], prints all 
+occurrences of pat [ ]in txt [ ] by using the KMP approach. You may 
+assume that n > m. 
+
+public class KMPStringMatching {
+
+    // Function to compute the LPS (Longest Prefix Suffix) array
+    public static void computeLPSArray(String pat, int[] lps) {
+        int m = pat.length();
+        int len = 0; // length of the previous longest prefix suffix
+        lps[0] = 0;  // lps[0] is always 0
+
+        int i = 1;
+        while (i &lt; m) {
+            if (pat.charAt(i) == pat.charAt(len)) {
+                len++;
+                lps[i] = len;
+                i++;
+            } else {
+                if (len != 0) {
+                    len = lps[len - 1]; // Try with previous longest prefix
+                } else {
+                    lps[i] = 0;
+                    i++;
+                }
+            }
+        }
+    }
+
+    // KMP pattern matching function
+    public static void KMPSearch(String pat, String txt) {
+        int m = pat.length();
+        int n = txt.length();
+
+        int[] lps = new int[m];
+        computeLPSArray(pat, lps);
+
+        int i = 0; // index for txt[]
+        int j = 0; // index for pat[]
+
+        System.out.println("Pattern found at positions:");
+
+        while (i &lt; n) {
+            if (pat.charAt(j) == txt.charAt(i)) {
+                i++;
+                j++;
+            }
+
+            if (j == m) {
+                System.out.println("Pattern found at index " + (i - j));
+                j = lps[j - 1]; // Continue searching for next match
+            } else if (i &lt; n && pat.charAt(j) != txt.charAt(i)) {
+                if (j != 0)
+                    j = lps[j - 1];
+                else
+                    i++;
+            }
+        }
+    }
+
+    // Driver code
+    public static void main(String[] args) {
+        String txt = "ABABDABACDABABCABAB";
+        String pat = "ABABCABAB";
+
+        KMPSearch(pat, txt);
+    }
+}
+
+
+
+✅ KMP Algorithm – High-Level Steps
+Input:
+Text string txt[0...n-1]
+
+Pattern string pat[0...m-1]
+
+Step 1: Preprocess the Pattern
+Goal: Build the LPS (Longest Prefix Suffix) array for the pattern.
+
+Initialize an array lps[] of size m.
+
+Set lps[0] = 0.
+
+For each position i from 1 to m-1:
+
+Compare pat[i] with the character at current prefix length.
+
+If they match, increase prefix length and store it in lps[i].
+
+If they don't match and the prefix length is not zero, move back using lps[len-1].
+
+Else, set lps[i] = 0.
+
+Step 2: Search Pattern in Text
+Goal: Use the LPS array to avoid redundant comparisons.
+
+Initialize two pointers:
+
+i for txt, starting at 0
+
+j for pat, starting at 0
+
+While i &lt; n:
+
+If txt[i] == pat[j], increment both i and j.
+
+If j == m:
+
+Pattern found at index i - j.
+
+Use lps[j - 1] to update j and continue searching.
+
+If mismatch and j > 0, update j = lps[j - 1].
+
+Else, increment i.
+
+Output:
+Indices in txt[] where the pattern pat[] occurs.
+
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+Given a text txt [0...n-1] and a pattern pat [0...m-1], prints all 
+occurrences of pat [ ] in txt [ ] by using the Rabin Krap approach. You 
+may assume that n > m. 
+
+public class RabinKarp {
+
+    // d is the number of characters in the input alphabet (e.g., 256 for extended ASCII)
+    final static int d = 256;
+
+    // A prime number for modulo operations
+    final static int q = 101;
+
+    public static void search(String pat, String txt) {
+        int m = pat.length();
+        int n = txt.length();
+        int i, j;
+        int p = 0; // hash value for pattern
+        int t = 0; // hash value for text window
+        int h = 1;
+
+        // The value of h would be "pow(d, m-1)%q"
+        for (i = 0; i &lt; m - 1; i++)
+            h = (h * d) % q;
+
+        // Calculate the hash value of pattern and first window of text
+        for (i = 0; i &lt; m; i++) {
+            p = (d * p + pat.charAt(i)) % q;
+            t = (d * t + txt.charAt(i)) % q;
+        }
+
+        // Slide the pattern over text one by one
+        for (i = 0; i lessthaneqto n - m; i++) {
+
+            // Check the hash values of current window of text and pattern
+            if (p == t) {
+                // If hash values match, check characters one by one
+                for (j = 0; j &lt; m; j++) {
+                    if (txt.charAt(i + j) != pat.charAt(j))
+                        break;
+                }
+
+                if (j == m) {
+                    System.out.println("Pattern found at index " + i);
+                }
+            }
+
+            // Calculate hash value for next window of text
+            if (i &lt; n - m) {
+                t = (d * (t - txt.charAt(i) * h) + txt.charAt(i + m)) % q;
+
+                // We might get negative value of t, converting it to positive
+                if (t &lt; 0)
+                    t = (t + q);
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        String txt = "GEEKS FOR GEEKS";
+        String pat = "GEEK";
+        search(pat, txt);
+    }
+}
+
+
+--------------------------------------------------------------------------------------------------------------------------
+Given a text txt [0...n-1] and a pattern pat [0...m-1], prints all 
+occurrences of pat [ ] in txt [ ] by using the Naïve string matching 
+approach. You may assume that n > m. 
+
+public class NaiveStringMatching {
+
+    public static void search(String txt, String pat) {
+        int n = txt.length();
+        int m = pat.length();
+
+        System.out.println("Pattern found at positions:");
+
+        for (int i = 0; i lessthanequalto n - m; i++) {
+            int j;
+
+            // Check if the pattern matches at position i
+            for (j = 0; j &lt; m; j++) {
+                if (txt.charAt(i + j) != pat.charAt(j)) {
+                    break;
+                }
+            }
+
+            // If j reached the end, the pattern matched
+            if (j == m) {
+                System.out.println("Pattern found at index " + i);
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        String txt = "AABAACAADAABAABA";
+        String pat = "AABA";
+
+        search(txt, pat);
+    }
+}
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+ Given a text txt [0...n-1] and a pattern pat [0...m-1], prints all 
+occurrences of pat [ ] in txt [ ] by using the Boyer Moore algorithm. 
+You may assume that n > m. 
+
+
+public class BoyerMoore {
+
+    static int NO_OF_CHARS = 256;
+
+    // Preprocessing: Fill the bad character array
+    static void badCharHeuristic(String str, int size, int badchar[]) {
+        // Initialize all occurrences as -1
+        for (int i = 0; i &lt; NO_OF_CHARS; i++)
+            badchar[i] = -1;
+
+        // Fill the actual value of last occurrence of a character
+        for (int i = 0; i &lt; size; i++)
+            badchar[(int) str.charAt(i)] = i;
+    }
+
+    // Search function for Boyer Moore algorithm
+    static void search(String txt, String pat) {
+        int m = pat.length();
+        int n = txt.length();
+
+        int[] badchar = new int[NO_OF_CHARS];
+
+        // Fill the bad character array
+        badCharHeuristic(pat, m, badchar);
+
+        int s = 0; // s is the shift of the pattern with respect to text
+        while (s &lt;equalto (n - m)) {
+            int j = m - 1;
+
+            // Keep reducing j while characters match
+            while (j >= 0 && pat.charAt(j) == txt.charAt(s + j))
+                j--;
+
+            // If the pattern is present at current shift, j becomes -1
+            if (j &lt; 0) {
+                System.out.println("Pattern found at index " + s);
+
+                // Shift pattern so next character in text aligns with last occurrence in pattern
+                s += (s + m &lt; n) ? m - badchar[txt.charAt(s + m)] : 1;
+            } else {
+                // Shift pattern so the bad character in text aligns with its last occurrence in pattern
+                s += Math.max(1, j - badchar[txt.charAt(s + j)]);
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        String txt = "ABAAABCD";
+        String pat = "ABC";
+        search(txt, pat);
+    }
+}
+
+
+
+
+How It Works (Bad Character Heuristic):
+Preprocess the pattern to store the last index of each character.
+
+Start aligning the pattern with the text from right to left.
+
+If mismatch, use the bad character rule to skip unnecessary comparisons.
+
+If match, print the index and shift accordingly.
+
+    </pre>
+</body>
+
+</html>
